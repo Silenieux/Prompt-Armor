@@ -1,7 +1,7 @@
 🛡️ Prompt Armor
-A simple, powerful desktop tool to help you write safer and more effective AI prompts.
+A local, database-driven utility to help you write safer and more effective AI prompts.
 
-🤔 Why does this exist?
+🤔 Why Does This Exist?
 We've all been there. You're interacting with a powerful Large Language Model (LLM), and it suddenly gives you a bizarre, unsafe, or completely useless answer. As AI becomes more integrated into our workflows, the quality and safety of our prompts are more important than ever. An ill-formed prompt can lead to:
 
 Hallucinations: The AI confidently makes up incorrect information.
@@ -12,46 +12,58 @@ Exploits: The AI is tricked by prompt injection attacks, leading to unintended b
 
 Wasted Time: You go back and forth trying to get the AI to understand your actual request.
 
-Inspired by the development of a private AI assistant named "Greg," Prompt Armor was born from a simple idea: what if we had a firewall for our AI prompts? A tool that could pre-flight our requests, spot potential issues, and help us communicate more clearly and safely with our AI counterparts.
+Inspired by the development of a private AI assistant named "Greg," Prompt Armor was born from a simple idea: what if we had a firewall for our AI prompts? A tool that could pre-flight our requests, spot potential issues, and help us communicate more clearly and safely.
 
 Prompt Armor is that firewall. It's a first line of defense, designed to give you insight and control before you ever hit "send."
 
 ✨ Features
-Prompt Armor analyzes your prompts in real-time and flags a variety of potential issues across several categories:
+Prompt Armor analyzes your prompts in real-time using a comprehensive, local SQLite database of rules categorized by security standards like the OWASP Top 10 for LLMs.
 
-🚨 Critical Threats:
+🛡️ Prompt Injection Defense: Detects classic jailbreaking techniques like "Do Anything Now" (DAN), role-playing overrides, and instruction hijacking.
 
-Malicious Intent: Detects requests for viruses, malware, hacking instructions, and other harmful content using robust regex patterns.
+💻 Insecure Output Warnings: Flags prompts that could cause the LLM to generate dangerous code (e.g., SQL injection vulnerabilities, unsafe Python commands).
 
-Unsafe/Adult Content: Flags prompts that are likely to generate sexually explicit or otherwise inappropriate material.
+🤫 Data Disclosure Prevention: Catches attempts to leak the AI's system prompt, access local files, or retrieve Personally Identifiable Information (PII).
 
-Prompt Injection & Exploits: Catches common patterns used to hijack or loop the AI.
+💣 Malicious Intent Blocking: Identifies requests for illegal acts, malware creation, deepfake instructions, and social engineering tactics.
 
-⚠️ Warnings & Risks:
+⚖️ Context-Aware Logic: Intelligently distinguishes between a dangerous request and a legitimate academic or creative query (e.g., "write a virus" vs. "write a story about a virus").
 
-AI Sentience Queries: Identifies questions about the AI's feelings or self-awareness that often lead to canned, unhelpful responses.
+💯 Risk Scoring: Assigns a numerical score to each prompt for a clear, immediate assessment of its potential danger.
 
-Absurd Content: Flags nonsensical or highly illogical prompts that have a high risk of causing the AI to hallucinate.
-
-Emotional Tone: Detects strong emotional language (frustration, sadness) that can lead to unpredictable AI behavior and offers a chance to rephrase for a more neutral, effective prompt.
-
-✍️ Prompt Enhancement:
-
-If a prompt is deemed safe but is very short, Prompt Armor will suggest a simple rewrite to encourage more detailed and specific responses from the AI.
-
-🎬 How It Works (The GIF)
 🚀 Getting Started
-Go to the Releases page.
+Go to the Releases Page on GitHub.
 
-Download the latest PromptArmor.exe (for Windows) or PromptArmor.app (for Mac, Not yet implimented).
+Download the latest PromptArmor.zip for your OS.
 
-Double-click to run! No installation needed.
+Unzip the file.
+
+Double-click PromptArmor.exe (on Windows) to run! No installation needed.
 
 🛠️ Built With
-Python
+Language: Python
 
-CustomTkinter for the user interface.
+GUI: CustomTkinter
+
+Database: SQLite
 
 A whole lot of love and a desire for safer AI interactions.
 
-Co-piloted by Gemini 2.5 Pro
+Co-piloted by Gemini
+
+📜 Version History
+v2.0 (Current) - The Database Engine
+
+Replaced all hardcoded analysis logic with a robust, external SQLite database.
+
+Implemented a comprehensive, categorized rule set based on OWASP Top 10 for LLMs.
+
+Introduced advanced risk-scoring and context-aware analysis to reduce false positives.
+
+v1.0 - The Prototype
+
+Initial release with a CustomTkinter GUI.
+
+Analysis logic was hardcoded directly into the Python script.
+
+Included basic checks for absurdity, exploits, and malicious keywords.
